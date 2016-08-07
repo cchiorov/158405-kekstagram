@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Cristina Chiorov](https://up.htmlacademy.ru/javascript/6/user/158405).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Пономарев](https://htmlacademy.ru/profile/id166116)
 
 ---
 
