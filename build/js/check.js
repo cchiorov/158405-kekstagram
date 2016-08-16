@@ -17,7 +17,7 @@
         for (var i = 0; i < a.length; i++) {
             artifactSquare = artifactSquare + a[i] * b[i];
         }
-        return "Общая площадь артефактов сжатия: " + artifactSquare + "  пикселей";
+        return "Общая площадь артефактов сжатия: " + artifactSquare + " пикселей";
 
     }
 
@@ -28,6 +28,4 @@
         }
         return "Количество красных точек во всех строчках изображения: " + amountOfRedPoints;
     }
-
-    return "Hello World";
 }
