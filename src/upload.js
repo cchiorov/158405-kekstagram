@@ -1,3 +1,4 @@
+
 /* global Resizer: true */
 
 /**
@@ -5,15 +6,15 @@
  * @author Igor Alexeenko (o0)
  */
 
-'use strict';
 
+'use strict';
 (function() {
   /** @enum {string} */
   var FileType = {
     'GIF': '',
     'JPEG': '',
     'PNG': '',
-    'SVG+XML': ''
+    'SVG+XML': '',
   };
 
   /** @enum {number} */
@@ -263,4 +264,36 @@
 
   cleanupResizer();
   updateBackground();
+
+  var inputLeft = document.querySelector('#resize-x');
+  var inputTop = document.querySelector('#resize-y');
+  var inputSide = document.querySelector('#resize-size');
+  var button = document.querySelector('#resize-fwd');
+  function validateForm() {
+    var left = parseInt(inputLeft.value, 10);
+    var top = parseInt(inputTop.value, 10);
+    var side = parseInt(inputSide.value, 10);
+    var isValid = true;
+    if (left < 0 || top < 0 || side <= 0) {
+      isValid = false;
+    }
+    if (left + side > currentResizer._image.naturalWidth) {
+      isValid = false;
+    }
+    if (top + side > currentResizer._image.naturalHeight) {
+      isValid = false;
+    }
+
+    if (isValid) {
+      button.removeAttribute('disabled2');
+    } else {
+      button.setAttribute('disabled', 'disabled');
+    }
+  }
+  inputLeft.oninput = validateForm;
+  inputTop.oninput = validateForm;
+  inputSide.oninput = validateForm;
+
+
+
 })();
