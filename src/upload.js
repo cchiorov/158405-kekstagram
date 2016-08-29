@@ -294,6 +294,27 @@
   inputTop.oninput = validateForm;
   inputSide.oninput = validateForm;
 
-
-
+  var browserCookies = require('browser-cookies');
+  filterForm.onsubmit = function() {
+    var filter = filterForm['upload-filter'].value;
+    browserCookies.set('upload-filter', filter, {
+      expires: getDaysCount()
+    });
+  };
+  function getDaysCount() {
+    var current = new Date();
+    var birthday = new Date(current.getFullYear(), 11, 9);
+    if (current < birthday) {
+      birthday = new Date(current.getFullYear() - 1, 11, 9);
+    }
+    var dif = current - birthday;
+    var days = Math.round(dif / (1000 * 60 * 60 * 24));
+    return days;
+  }
+  var currentUploadFilter = filterForm['upload-filter'];
+  var savedFilter = browserCookies.get('upload-filter');
+  if (savedFilter) {
+    currentUploadFilter.value = savedFilter;
+    filterForm.onchange();
+  }
 })();
