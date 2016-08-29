@@ -103,14 +103,12 @@
 
       // Установка начальной точки системы координат в центр холста.
       this._ctx.translate(this._container.width / 2, this._container.height / 2);
-
       var displX = -(this._resizeConstraint.x + this._resizeConstraint.side / 2);
       var displY = -(this._resizeConstraint.y + this._resizeConstraint.side / 2);
       // Отрисовка изображения на холсте. Параметры задают изображение, которое
       // нужно отрисовать и координаты его верхнего левого угла.
       // Координаты задаются от центра холста.
       this._ctx.drawImage(this._image, displX, displY);
-
       // Отрисовка прямоугольника, обозначающего область изображения после
       // кадрирования. Координаты задаются от центра.
       this._ctx.strokeRect(
@@ -118,23 +116,21 @@
           (-this._resizeConstraint.side / 2) - this._ctx.lineWidth / 2,
           this._resizeConstraint.side - this._ctx.lineWidth / 2,
           this._resizeConstraint.side - this._ctx.lineWidth / 2);
-      var width=this._container.width;
-      var height=this._container.height;
-      var side=this._resizeConstraint.side;
-      var lineWidth=this._ctx.lineWidth;
+      var width = this._container.width;
+      var height = this._container.height;
+      var side = this._resizeConstraint.side;
+      var lineWidth = this._ctx.lineWidth;
       this._ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
-      this._ctx.fillRect(-width/2, -height/2, width,(height-side)/2-lineWidth);
-      this._ctx.fillRect(-width/2, -side/2 - lineWidth,(width-side)/2-lineWidth,(height + side) / 2 + lineWidth);
-      this._ctx.fillRect(-side/2 - lineWidth, side/2 - lineWidth/2, width/2 + side/2 + lineWidth, 300);
-      this._ctx.fillRect(side/2 - lineWidth/2, -side/2 - lineWidth,(width-side)/2 + lineWidth/2,side + lineWidth/2); 
-
-      this._ctx.fillStyle = "white";
+      this._ctx.fillRect(-width / 2, -height / 2, width, (height - side) / 2 - lineWidth);
+      this._ctx.fillRect(-width / 2, -side / 2 - lineWidth, (width - side) / 2 - lineWidth, (height + side) / 2 + lineWidth);
+      this._ctx.fillRect(-side / 2, -lineWidth, side / 2 - lineWidth / 2, width / 2 + side / 2 + lineWidth, 300);
+      this._ctx.fillRect(side / 2, -lineWidth / 2, -side / 2 - lineWidth, (width - side) / 2 + lineWidth / 2, side + lineWidth / 2);
+      this._ctx.fillStyle = 'white';
       this._ctx.font = 'lighter 20px sans-serif';
-      this._ctx.textBaseline = "bottom";
-      this._ctx.textAlign = "center";
+      this._ctx.textBaseline = 'bottom';
+      this._ctx.textAlign = 'center';
       this._ctx.lineWidth = 1;
-      this._ctx.fillText(this._image.naturalWidth + " x " + this._image.naturalHeight,0,-side/2-8);
-
+      this._ctx.fillText(this._image.naturalWidth + ' x ' + this._image.naturalHeight, 0, -side / 2 - 8);
       // Восстановление состояния канваса, которое было до вызова ctx.save
       // и последующего изменения системы координат. Нужно для того, чтобы
       // следующий кадр рисовался с привычной системой координат, где точка
